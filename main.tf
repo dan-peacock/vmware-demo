@@ -17,8 +17,13 @@ provider "vsphere" {
 data "vsphere_datacenter" "datacenter" {
   name = var.dc_name
 }
+data "vsphere_host" "host" {
+  name          = "ESXI-HASH01"
+  datacenter_id = data.vsphere_datacenter.datacenter.id
+}
 
 resource "vsphere_compute_cluster" "compute_cluster" {
   name            = "terraform-compute-cluster-test"
+  host_system_ids = [data.vsphere_host.id]
   datacenter_id   = data.vsphere_datacenter.datacenter.id
 }
