@@ -24,6 +24,6 @@ data "vsphere_host" "host" {
 
 resource "vsphere_compute_cluster" "compute_cluster" {
   name            = "terraform-compute-cluster-test"
-  host_system_ids = [data.vsphere_host.id]
+  host_system_ids = [data.vsphere_host.host.id]
   datacenter_id   = data.vsphere_datacenter.datacenter.id
 }
