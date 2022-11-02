@@ -18,7 +18,7 @@ data "vsphere_datacenter" "datacenter" {
   name = var.dc_name
 }
 data "vsphere_host" "host" {
-  name          = "192.168.116.90"
+  name          = "ESXI-HASH01.hinches.net"
   datacenter_id = data.vsphere_datacenter.datacenter.id
 }
 
