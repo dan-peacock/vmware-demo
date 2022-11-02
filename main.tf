@@ -14,10 +14,11 @@ provider "vsphere" {
   allow_unverified_ssl = true
 }
 
-data "vsphere_content_library" "library" {
-  name = "VM Templates"
+data "vsphere_datacenter" "datacenter" {
+  name = var.dc_name
 }
 
-output "content_library" {
-    value = data.vsphere_content_library.library.id
+resource "vsphere_compute_cluster" "compute_cluster" {
+  name            = "terraform-compute-cluster-test"
+  datacenter_id   = data.vsphere_datacenter.datacenter.id
 }
