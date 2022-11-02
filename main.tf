@@ -18,6 +18,6 @@ data "vsphere_content_library" "library" {
   name = "VM Templates"
 }
 
-output "content library" {
+output "content_library" {
     value = data.vsphere_content_library.library.id
 }
