@@ -19,7 +19,7 @@ data "vsphere_datacenter" "datacenter" {
 }
 
 data "vsphere_compute_cluster" "cluster" {
-  name          = "Henlow"
+  name          = "192.168.116.99"
   datacenter_id = data.vsphere_datacenter.datacenter.id
 }
 
