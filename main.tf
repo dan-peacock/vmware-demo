@@ -36,4 +36,8 @@ resource "vsphere_virtual_machine" "vm" {
   network_interface {
     network_id = data.vsphere_network.network.id
   }
+    disk {
+    label = "aeltc-tf-disk"
+    size  = 5
+  }
 }
