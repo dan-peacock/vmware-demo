@@ -21,10 +21,10 @@ variable "default_password" {
     default = "Password1234!"
 }
 
-variable "tags" {
-  description = "Additional resource tags"
-  type        = string
-}
+# variable "tags" {
+#   description = "Additional resource tags"
+#   type        = string
+# }
 
 variable "SP_Password" {
     description = "SP Password"
