@@ -125,6 +125,6 @@ resource "vsphere_virtual_machine" "vm" {
   }
     disk {
     label = "aeltc-tf-disk"
-    size  = 11
+    size  = var.vmware_size
   }
 }
