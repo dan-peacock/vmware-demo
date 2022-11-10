@@ -38,6 +38,7 @@ resource "vsphere_virtual_machine" "vm" {
   datastore_id     = data.vsphere_datastore.datastore.id
   num_cpus         = 1
   guest_id         = "other3xLinux64Guest"
+  wait_for_guest_ip_timeout = false
   memory           = 1024
   network_interface {
     network_id = data.vsphere_network.network.id
