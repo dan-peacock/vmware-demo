@@ -18,8 +18,12 @@ data "vsphere_datacenter" "datacenter" {
   name = var.dc_name
 }
 
+data "vsphere_datastore" "datastore" {
+  name          = "datastore1 (1)"
+  datacenter_id = data.vsphere_datacenter.datacenter.id
+}
 data "vsphere_compute_cluster" "cluster" {
-  name          = "192.168.116.99"
+  name          = "Henlow"
   datacenter_id = data.vsphere_datacenter.datacenter.id
 }
 
@@ -31,6 +35,7 @@ data "vsphere_network" "network" {
 resource "vsphere_virtual_machine" "vm" {
   name             = "AELTC-TF"
   resource_pool_id = data.vsphere_compute_cluster.cluster.resource_pool_id
+  datastore_id     = data.vsphere_datastore.datastore.id
   num_cpus         = 1
   memory           = 1024
   network_interface {
