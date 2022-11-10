@@ -10,7 +10,7 @@ module "tfconfig-functions" {
     source = "./policies/common-functions/tfconfig-functions/tfconfig-functions.sentinel"
 }
 
-policy "restrict-vm-disk-size" {
+policy "restrict-vm-size" {
     source = "./policies/azure/restrict-vm-size.sentinel"
     enforcement_level = "hard-mandatory"
 }
