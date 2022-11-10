@@ -37,6 +37,7 @@ resource "vsphere_virtual_machine" "vm" {
   resource_pool_id = data.vsphere_compute_cluster.cluster.resource_pool_id
   datastore_id     = data.vsphere_datastore.datastore.id
   num_cpus         = 1
+  guest_id         = "other3xLinux64Guest"
   memory           = 1024
   network_interface {
     network_id = data.vsphere_network.network.id
