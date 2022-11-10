@@ -17,13 +17,23 @@ provider "vsphere" {
 data "vsphere_datacenter" "datacenter" {
   name = var.dc_name
 }
-data "vsphere_host" "host" {
-  name          = "ESXI-HASH01.hinches.net"
+
+data "vsphere_compute_cluster" "cluster" {
+  name          = "Henlow"
   datacenter_id = data.vsphere_datacenter.datacenter.id
 }
 
-resource "vsphere_compute_cluster" "compute_cluster" {
-  name            = "terraform-compute-cluster-test"
-  host_system_ids = [data.vsphere_host.host.id]
-  datacenter_id   = data.vsphere_datacenter.datacenter.id
+data "vsphere_network" "network" {
+  name          = "VM Network"
+  datacenter_id = data.vsphere_datacenter.datacenter.id
+}
+
+resource "vsphere_virtual_machine" "vm" {
+  name             = "AELTC-TF"
+  resource_pool_id = data.vsphere_compute_cluster.cluster.resource_pool_id
+  num_cpus         = 1
+  memory           = 1024
+  network_interface {
+    network_id = data.vsphere_network.network.id
+  }
 }
