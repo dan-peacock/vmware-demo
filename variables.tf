@@ -45,3 +45,6 @@ variable "tenant_ID" {
     description = "SP AppID"
     type = string
 }
+variable "vmware_size" {
+    type = string
+}
